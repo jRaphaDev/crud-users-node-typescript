@@ -1,0 +1,45 @@
+{
+  "name": "crud-user",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "tsc",
+    "dev": "tsc --watch & nodemon dist",
+    "test": "mocha --reporter spec --compilers ts:ts-node/register 'test/**/*.test.ts'",
+    "lint": "eslint src --ext ts",
+    "tsc": "tsc"
+  },
+  "author": "Raphael Freitas",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "1.15.2",
+    "eslint": "4.0.0",
+    "express": "4.16.2",
+    "morgan": "1.7.0",
+    "mysql": "2.15.0",
+    "reflect-metadata": "0.1.12",
+    "routing-controllers": "0.7.6",
+    "typeorm": "0.1.12"
+  },
+  "devDependencies": {
+    "@types/body-parser": "0.0.33",
+    "@types/chai": "3.4.34",
+    "@types/chai-http": "0.0.29",
+    "@types/mocha": "2.2.32",
+    "@types/morgan": "1.7.32",
+    "@types/node": "7.0.22",
+    "chai": "3.5.0",
+    "chai-http": "3.0.0",
+    "eslint": "4.0.0",
+    "eslint-config-airbnb-base": "11.2.0",
+    "eslint-plugin-import": "2.3.0",
+    "eslint-plugin-promise": "3.5.0",
+    "mocha": "3.1.2",
+    "supertest": "3.0.0",
+    "ts-node": "3.3.0",
+    "tsc": "1.20150623.0",
+    "typescript": "2.3.3",
+    "typescript-eslint-parser": "3.0.0"
+  }
+}
