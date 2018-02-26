@@ -1,10 +1,12 @@
 
-import { Entity, Column, PrimaryGeneratedColumn } from "typeorm";
+import { Entity, Column, PrimaryGeneratedColumn, BaseEntity, Table } from "typeorm";
+import { text } from "body-parser";
 
 @Entity()
-export class User {
+export class User extends BaseEntity {
 
-  constructor(id: number, name: String) {
+  constructor(id: number, name: string) {
+    super()
     this.id = id
     this.name = name
   }
@@ -12,7 +14,11 @@ export class User {
   @PrimaryGeneratedColumn()
   private id: number
 
-  @Column({ length: 100 })
-  private name: String
+  @Column({ type: "text", nullable: false })
+  private name: string
+
+  public getName(): string {
+    return this.name
+  }
 
 }
