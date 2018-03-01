@@ -11,17 +11,21 @@ import { Subscription } from 'rxjs/Subscription';
 @JsonController('/api/v1/users')
 export class UserController {
 
-  private userRepository: UserRepository = new UserRepository()
+  private userRepository: UserRepository
+
+  constructor() {
+    this.userRepository = new UserRepository()
+  }
 
   @Post('/')
-  async create(@Body() user: User, @Res() response: Response): Promise<Response> {
+  create(@Body() user: User, @Res() response: Response): Promise<Response> {
 
-    return await this.userRepository.post(user).toPromise()
+    return this.userRepository.create(user).toPromise()
       .then((user: User) => {
 
         if (user == null) {
           console.log('User was not created')
-          return response.status(400).send('user is null')
+          return response.status(400).send('User was not create')
         }
 
         console.log('User created with success')
@@ -35,10 +39,9 @@ export class UserController {
   }
 
   @Get('/')
-  async getAll(@Res() response: Response): Promise<Response> {
+  getAll(@Res() response: Response): Promise<Response> {
 
-    return await this.userRepository.findAll().toPromise()
-
+    return this.userRepository.findAll().toPromise()
       .then((users: User[]) => {
 
         console.log(`was found ${users.length} users with success`)
@@ -52,9 +55,9 @@ export class UserController {
   }
 
   @Get('/:id')
-  async getOne(@Param("id") id: number, @Res() response: Response): Promise<Response> {
+  getOne(@Param("id") id: number, @Res() response: Response): Promise<Response> {
 
-    return await this.userRepository.findOne(id).toPromise()
+    return this.userRepository.findOne(id).toPromise()
       .then((user: User) => {
 
         if (user == null) {
